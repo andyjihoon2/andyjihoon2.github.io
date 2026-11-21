@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Andy (Jihoon) Jeon — Electrical Engineering undergraduate at Georgia Tech. Academic research and engineering portfolio." />
+  <title>Andy Jeon | Electrical Engineering Portfolio</title>
+  <!-- Social share thumbnail: Open Graph & Twitter/X -->
+  <link rel="canonical" href="https://andyjihoon2.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Andy Jeon" />
+  <meta property="og:title" content="Andy Jeon | Electrical Engineering Portfolio" />
+  <meta property="og:description" content="Georgia Tech undergraduate · Projects, Research & Publications" />
+  <meta property="og:url" content="https://andyjihoon2.github.io/" />
+  <meta property="og:image" content="https://andyjihoon2.github.io/assets/og-preview.png" />
+  <meta property="og:image:secure_url" content="https://andyjihoon2.github.io/assets/og-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Andy Jeon — Electrical Engineering Portfolio at Georgia Tech" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Andy Jeon | Electrical Engineering Portfolio" />
+  <meta name="twitter:description" content="Georgia Tech undergraduate · Projects, Research & Publications" />
+  <meta name="twitter:image" content="https://andyjihoon2.github.io/assets/og-preview.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Tokens ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0f14;
+      --bg2:       #13161e;
+      --bg3:       #1a1f2e;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #e8eaf0;
+      --muted:     #8b90a0;
+      --accent:    #5b8dee;
+      --accent2:   #2ac9a0;
+      --grad:      linear-gradient(135deg, #5b8dee, #2ac9a0);
+      --radius:    14px;
+      --nav-h:     64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: #8cb5ff; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 99px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(13,15,20,0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 32px;
+      width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 1rem; letter-spacing: -0.01em;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex; gap: 8px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 8px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover {
+      color: var(--text); background: var(--bg3);
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: calc(var(--nav-h) + 60px) 32px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+    }
+    .hero-glow-1 {
+      background: rgba(91,141,238,0.15);
+      top: -100px; right: -100px;
+    }
+    .hero-glow-2 {
+      background: rgba(42,201,160,0.12);
+      bottom: -80px; left: 10%;
+    }
+
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-text .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(91,141,238,0.12);
+      border: 1px solid rgba(91,141,238,0.25);
+      color: var(--accent); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 99px;
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.8); }
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero-text h1 span {
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .bio {
+      font-size: 1.05rem; color: var(--muted); max-width: 520px;
+      line-height: 1.8; margin-bottom: 36px;
+    }
+    .hero-text .bio strong { color: var(--text); font-weight: 600; }
+
+    .hero-cta {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      transition: all .2s; border: none;
+    }
+    .btn-primary {
+      background: var(--grad); color: #fff;
+    }
+    .btn-primary:hover { opacity: .88; transform: translateY(-1px); color: #fff; }
+    .btn-ghost {
+      background: var(--bg3); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--bg2); transform: translateY(-1px); color: var(--text); }
+
+    /* ── Hero Photo ── */
+    .hero-photo-wrap {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -2px;
+      border-radius: 28px;
+      background: var(--grad);
+      z-index: 0;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute; inset: -20px;
+      border-radius: 32px;
+      background: var(--grad);
+      opacity: .15;
+      filter: blur(24px);
+      z-index: -1;
+    }
+    .hero-photo-wrap img {
+      width: 100%; max-width: 360px;
+      aspect-ratio: 3/4; object-fit: cover; object-position: center 30%;
+      border-radius: 26px;
+      position: relative; z-index: 1;
+      display: block;
+    }
+
+    /* ── Section common ── */
+    section { padding: 100px 32px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #fff; margin-bottom: 48px; line-height: 1.2;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px; background: var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── Stats strip ── */
+    .stats {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 32px;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2rem; font-weight: 700; color: #fff;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+
+    /* ── Experience timeline ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 0 40px; position: relative;
+      padding-bottom: 40px;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-date {
+      font-size: 0.82rem; font-weight: 500; color: var(--muted);
+      text-align: right; padding-top: 6px;
+      line-height: 1.4;
+    }
+    .tl-right { border-left: 1px solid var(--border); padding-left: 36px; position: relative; }
+    .tl-right::before {
+      content: '';
+      position: absolute; left: -5px; top: 8px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+    }
+    .tl-title { font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 2px; }
+    .tl-org { font-size: 0.87rem; color: var(--accent); margin-bottom: 12px; font-weight: 500; }
+    .tl-bullets { list-style: none; }
+    .tl-bullets li {
+      font-size: 0.9rem; color: var(--muted);
+      padding-left: 16px; position: relative; margin-bottom: 6px;
+    }
+    .tl-bullets li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.8rem;
+    }
+
+    /* ── Publications ── */
+    .pub-list { display: flex; flex-direction: column; gap: 20px; }
+    .pub-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: border-color .2s, transform .2s;
+    }
+    .pub-card:hover { border-color: rgba(91,141,238,0.35); transform: translateY(-2px); }
+    .pub-num {
+      font-size: 0.72rem; font-weight: 700; color: var(--accent);
+      background: rgba(91,141,238,0.12); border: 1px solid rgba(91,141,238,0.2);
+      border-radius: 6px; padding: 4px 10px; white-space: nowrap; margin-top: 2px;
+      letter-spacing: 0.05em;
+    }
+    .pub-body {}
+    .pub-title { font-weight: 600; color: #fff; font-size: 0.97rem; margin-bottom: 6px; }
+    .pub-meta { font-size: 0.84rem; color: var(--muted); }
+    .pub-meta em { color: var(--accent); font-style: normal; }
+
+    /* ── Project cards ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .proj-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: border-color .2s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .proj-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad); opacity: 0; transition: opacity .25s;
+    }
+    .proj-card:hover { border-color: rgba(91,141,238,0.3); transform: translateY(-4px); }
+    .proj-card:hover::before { opacity: 1; }
+    .proj-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .proj-title { font-weight: 700; color: #fff; font-size: 0.97rem; line-height: 1.4; }
+    .proj-year {
+      font-size: 0.75rem; color: var(--muted); font-weight: 500;
+      white-space: nowrap; padding-top: 2px;
+    }
+    .proj-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 4px 10px; border-radius: 99px;
+      background: rgba(91,141,238,0.1); color: var(--accent);
+      border: 1px solid rgba(91,141,238,0.18);
+    }
+
+    /* ── Awards ── */
+    .awards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+    }
+    .award-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .award-card:hover { border-color: rgba(42,201,160,0.35); transform: translateY(-2px); }
+    .award-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .award-title { font-weight: 600; font-size: 0.95rem; color: #fff; margin-bottom: 4px; line-height: 1.4; }
+    .award-org { font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; }
+    .award-detail-text { font-size: 0.8rem; color: #5b8dee; font-weight: 500; }
+    .award-date-tag {
+      display: inline-block; margin-top: 10px;
+      font-size: 0.72rem; color: var(--muted); font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;
+    }
+    .skill-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .skill-card-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: 0.8rem; font-weight: 500;
+      padding: 5px 12px; border-radius: 8px;
+      background: var(--bg3); color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Education ── */
+    .edu-list { display: flex; flex-direction: column; gap: 20px; }
+    .edu-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+    }
+    .edu-inst { font-weight: 700; color: #fff; font-size: 1rem; margin-bottom: 4px; }
+    .edu-deg { font-size: 0.87rem; color: var(--muted); }
+    .edu-date { font-size: 0.82rem; color: var(--accent); font-weight: 500; white-space: nowrap; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-name {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 6px;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.85rem; color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); margin-top: 20px; }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Subtle card lift: keep the original blue/green style. */
+    .proj-card, .pub-card, .award-card, .edu-card, .skill-card {
+      transform-origin: center center;
+      transition: transform .28s cubic-bezier(.22,1,.36,1),
+                  box-shadow .28s ease, border-color .28s ease,
+                  opacity .6s ease;
+      will-change: auto;
+    }
+    /* .reveal.visible normally sets transform:none; this more-specific rule
+       ensures the hover zoom works after the scroll reveal has finished. */
+    @media (hover: hover) and (pointer: fine) {
+      .proj-card.reveal.visible:hover,
+      .pub-card.reveal.visible:hover,
+      .award-card.reveal.visible:hover,
+      .edu-card.reveal.visible:hover,
+      .skill-card.reveal.visible:hover {
+        transform: translateY(-3px) scale(1.015);
+        box-shadow: 0 12px 28px rgba(0,0,0,.18);
+        border-color: rgba(42,201,160,.30);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .proj-card.reveal.visible:hover,
+      .pub-card.reveal.visible:hover,
+      .award-card.reveal.visible:hover,
+      .edu-card.reveal.visible:hover,
+      .skill-card.reveal.visible:hover {
+        transform: none;
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section { padding: 72px 20px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-text .bio { margin: 0 auto 32px; }
+      .hero-cta { justify-content: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-wrap img { max-width: 260px; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .tl-item { grid-template-columns: 1fr; gap: 4px; }
+      .tl-date { text-align: left; }
+      .tl-right { border-left: none; padding-left: 0; }
+      .tl-right::before { display: none; }
+      nav .nav-links { display: none; }
+    }
+    /* Photo placeholder: replace with <img src="assets/photo.jpg" ...> after adding your own portrait. */
+    .photo-placeholder { width:100%; max-width:360px; aspect-ratio:3/4; border-radius:26px;
+      position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;
+      justify-content:center; gap:14px; background:linear-gradient(160deg,#171b26,#25283b); }
+    .photo-placeholder span { font-family:'Playfair Display',Georgia,serif; font-size:6rem;
+      font-weight:700; background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+    .photo-placeholder small { color:var(--muted); font-size:.66rem; letter-spacing:.15em; }
+    @media(max-width:768px){.photo-placeholder{max-width:260px;}}
+  
+    .pub-title a { color:#fff; }
+    .pub-title a:hover { color:var(--accent2); }
+    /* Content brief additions; original visual language preserved */
+    .hero-subtitle { font-weight:600; color:var(--text); font-size:1rem; margin-bottom:16px; }
+    .hero-photo-wrap .photo-fallback { width:100%; max-width:360px; aspect-ratio:3/4; border-radius:26px; background:var(--bg2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:.83rem; letter-spacing:.04em; text-align:center; padding:24px; position:relative; z-index:1; }
+    .hero-photo-wrap img { display:none; }
+    .hero-photo-wrap.has-photo img { display:block; }
+    .hero-photo-wrap.has-photo .photo-fallback { display:none; }
+    .pending-link { display:inline-flex; align-items:center; color:var(--muted); border:1px solid var(--border); padding:12px 18px; border-radius:10px; font-size:.85rem; cursor:not-allowed; }
+    .verification { color:var(--muted); font-size:.76rem; margin-top:10px; }
+    .pub-meta .citation-pending { color:var(--muted); font-style:italic; }
+    .site-note { font-size:.74rem; color:var(--muted); margin-top:14px; }
+    section { scroll-margin-top:var(--nav-h); }
+    a:focus-visible { outline:2px solid var(--accent2); outline-offset:4px; }
+    @media(max-width:768px) { .hero-photo-wrap .photo-fallback { max-width:260px; } .nav-inner { padding:0 20px; } .hero-inner { gap:36px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .reveal {opacity:1;transform:none;transition:none} .badge-dot {animation:none} * {animation-duration:.01ms!important;transition-duration:.01ms!important} }
+    @media(max-width:440px){.section-title{margin-bottom:26px}.edu-card{flex-direction:column;gap:8px}.proj-card{padding:22px}.pub-card{padding:20px}}
+
+    /* ── v6 layout refinements (original style retained) ── */
+    .projects-grid {grid-template-columns: repeat(2, minmax(0,1fr)); gap:22px;}
+    .skills-grid {grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px;}
+    .proj-card, .skill-card {min-width:0;}
+    .skill-card {height:100%;}
+    .awards-editorial {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:54px; row-gap:0;}
+    .award-entry {display:grid; grid-template-columns:44px minmax(0,1fr); gap:5px 18px; align-content:start; position:relative; padding:22px 0 24px; border-top:1px solid rgba(255,255,255,.13); min-width:0; transition:border-color .18s ease;}
+    .award-index {font-size:.73rem; font-weight:600; color:var(--accent2); letter-spacing:.025em; padding-top:4px; white-space:nowrap;}
+    .award-content {min-width:0;}
+    .award-content h3 {font-size:.98rem; line-height:1.5; color:#f3f4f8; font-weight:650; margin:0 0 6px;}
+    .award-content p {color:var(--muted); font-size:.84rem; line-height:1.6;}
+    .award-accent {display:block; margin-top:6px; font-size:.77rem; color:var(--accent);}
+    .award-entry time {grid-column:2; font-size:.73rem; color:#778192; letter-spacing:.065em; font-weight:600; margin-top:4px;}
+    .award-entry:hover {border-color:var(--accent2);}
+    .award-entry:hover h3 {color:#fff;}
+    .footer-subtitle {font-size:.85rem;color:var(--muted)}
+    .footer-social {display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px; margin:27px 0 21px;}
+    .social-icon {display:inline-flex; align-items:center; gap:10px; min-height:42px; padding:9px 14px; border:1px solid rgba(255,255,255,.12); border-radius:10px; background:#1a1f2e; color:var(--text); font-size:.82rem; transition:transform .17s cubic-bezier(.2,.8,.2,1), border-color .17s ease, background .17s ease;}
+    .social-icon svg {width:19px;height:19px; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0;}
+    .social-icon:not(.is-pending):hover {transform:translateY(-2px); border-color:var(--accent2); background:#20283b; color:#fff;}
+    .social-icon.is-pending {opacity:.48;cursor:not-allowed;}
+    @property --spin-angle {syntax:'<angle>'; initial-value:0deg; inherits:false;}
+    @keyframes border-orbit {to {--spin-angle:360deg;}}
+    /* Cards: instant-feeling lift, restrained zoom, two-color orbiting border. */
+    .proj-card, .pub-card, .edu-card, .skill-card {
+      border:1.5px solid transparent;
+      background:linear-gradient(var(--bg2),var(--bg2)) padding-box,
+                 linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.065)) border-box;
+      transition:transform .18s cubic-bezier(.2,.82,.22,1),box-shadow .2s ease,opacity .44s ease;
+      transform-origin:center;
+      will-change:auto;
+    }
+    .proj-card::before {display:none;}
+    @media(hover:hover) and (pointer:fine) {
+      .proj-card.reveal.visible:hover,
+      .pub-card.reveal.visible:hover,
+      .edu-card.reveal.visible:hover,
+      .skill-card.reveal.visible:hover {
+        transform:translateY(-4px) scale(1.012);
+        background:linear-gradient(var(--bg2),var(--bg2)) padding-box,
+                   conic-gradient(from var(--spin-angle),var(--accent),var(--accent2),var(--accent),var(--accent2),var(--accent)) border-box;
+        box-shadow:0 11px 25px rgba(0,0,0,.19),0 0 17px rgba(42,201,160,.035);
+        animation:border-orbit 3.2s linear infinite;
+      }
+    }
+    .reveal {transition:opacity .42s ease,transform .42s cubic-bezier(.2,.82,.22,1);}
+    @media(max-width:768px) {
+      .projects-grid {grid-template-columns:1fr;}
+      .skills-grid {grid-template-columns:1fr;}
+      .awards-editorial {grid-template-columns:1fr;}
+      .award-entry {padding:17px 0 19px;}
+    }
+    @media(min-width:769px) and (max-width:980px) {.skills-grid{gap:12px}.skill-card{padding:19px}}
+    @media(prefers-reduced-motion:reduce) {
+      .proj-card.reveal.visible:hover,.pub-card.reveal.visible:hover,.edu-card.reveal.visible:hover,.skill-card.reveal.visible:hover {animation:none;transform:none;}
+    }
+
+
+    /* v7 — editorial awards with the same animated dual-accent hover as projects */
+    .award-entry {
+      border: 1.5px solid transparent;
+      border-top-color: rgba(255,255,255,.13);
+      border-radius: 12px;
+      padding: 21px 17px 23px;
+      background: transparent;
+      transition: transform .16s cubic-bezier(.2,.82,.22,1), box-shadow .18s ease,
+                  opacity .42s ease, border-color .16s ease;
+      transform-origin: center;
+    }
+    .award-entry .award-content h3 { transition:color .16s ease; }
+    @media (hover:hover) and (pointer:fine) {
+      .award-entry.reveal.visible:hover {
+        border-color: transparent;
+        transform: translateY(-4px) scale(1.012);
+        background: linear-gradient(var(--bg2),var(--bg2)) padding-box,
+          conic-gradient(from var(--spin-angle), var(--accent), var(--accent2), var(--accent), var(--accent2), var(--accent)) border-box;
+        box-shadow: 0 12px 25px rgba(0,0,0,.20), 0 0 17px rgba(91,141,238,.045);
+        animation: border-orbit 3.2s linear infinite;
+      }
+    }
+    @media (max-width:768px) { .award-entry {padding:18px 14px 20px;} }
+    @media (prefers-reduced-motion:reduce) {
+      .award-entry.reveal.visible:hover {animation:none; transform:none;}
+    }
+
+
+    /* v9: keep the portrait INSIDE the original 3:4 hero frame. */
+    .hero-photo-wrap {
+      width: 360px;
+      height: 480px;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      justify-self: center;
+      flex: none;
+      isolation: isolate;
+    }
+    .hero-photo-wrap img,
+    .hero-photo-wrap.has-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      aspect-ratio: auto;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 26px;
+    }
+    .hero-photo-wrap:not(.has-photo) img { display:none; }
+    .hero-photo-wrap .photo-fallback {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      max-width: none;
+    }
+    @media (max-width: 768px) {
+      .hero-photo-wrap { width:260px; height:calc(260px * 4 / 3); }
+      .hero-photo-wrap img { max-width: none; }
+    }
+
+
+
+    /* ── v10 / Light Edition — uncluttered, editorial, Apple-like restraint ── */
+    :root {
+      --bg: #ffffff;
+      --bg2: #fafbfc;
+      --bg3: #f1f4f7;
+      --border: rgba(20,31,44,.10);
+      --text: #1d2430;
+      --muted: #657182;
+      --accent: #5b8dee;
+      --accent2: #2ac9a0;
+      --grad: linear-gradient(120deg,#5b8dee 0%,#2ac9a0 100%);
+      --radius: 16px;
+    }
+    body { background:#fff; color:var(--text); font-size:15px; }
+    a:hover {color:#2860c7;}
+    ::-webkit-scrollbar-track {background:#fff;}
+    ::-webkit-scrollbar-thumb {background:#ccd5df;}
+    nav { background:rgba(255,255,255,.85); border-bottom-color:rgba(22,31,45,.09); box-shadow:none; }
+    .nav-links a { color:#5e6976; font-size:.77rem; letter-spacing:.055em; }
+    .nav-links a:hover { color:#152334; background:#f2f5f8; }
+    .nav-logo {background:var(--grad);-webkit-background-clip:text;background-clip:text;}
+    #hero {min-height:88vh; padding-top:calc(var(--nav-h) + 58px);padding-bottom:75px;}
+    .hero-glow {display:none;}
+    .hero-inner {gap:72px;}
+    .hero-text .badge { background:#eff5ff; border:1px solid #e0ebfd; color:#376dc6; font-weight:600; }
+    .badge-dot { background:#43bc9d; animation:none; }
+    .hero-text h1 {font-family:Inter,system-ui,sans-serif; font-weight:700;letter-spacing:-.065em; font-size:clamp(3.25rem,6vw,5.1rem); color:#15202f;margin-bottom:18px;line-height:1.08;}
+    .hero-text h1 span {background:var(--grad);-webkit-background-clip:text;background-clip:text;}
+    .hero-subtitle { color:#253344; font-size:1rem; letter-spacing:-.01em;}
+    .hero-text .bio {color:#657182;line-height:1.8;font-size:1rem;max-width:525px;}
+    .btn {border-radius:11px; transition:transform .16s ease,box-shadow .16s ease,background .16s ease;}
+    .btn-primary {background:#1b2635; color:#fff; box-shadow:0 3px 10px rgba(19,35,51,.08);}
+    .btn-primary:hover {opacity:1;background:#2d4665;color:white;transform:translateY(-2px);}
+    .btn-ghost {background:#f4f6f8;border:1px solid #e7ebf0;color:#273343;}
+    .btn-ghost:hover {background:#eaf0f5;color:#17283b;}
+    .hero-photo-wrap::before {background:var(--grad);}
+    .hero-photo-wrap::after {opacity:.07;filter:blur(18px);}
+    .hero-photo-wrap {box-shadow:0 18px 50px rgba(21,33,47,.09);border-radius:28px;}
+    .section-label {color:#3973ca;font-weight:700;letter-spacing:.14em;}
+    .section-title {font-family:Inter,system-ui,sans-serif;font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.045em;font-weight:700;color:#192534;margin-bottom:42px;}
+    section {padding-top:94px;padding-bottom:94px;}
+    .divider {background:#e9edf1;}
+    .edu-card, .pub-card, .proj-card, .skill-card {
+      background:#fbfcfd;
+      border:1px solid #e5eaf0;
+      box-shadow:0 3px 14px rgba(25,40,61,.018);
+      border-radius:16px;
+    }
+    .edu-inst,.tl-title,.proj-title,.pub-title,.award-title {color:#1d2939;}
+    .edu-date,.tl-org {color:#3975c7;}
+    .tl-right {border-left-color:#e3e8ef;}
+    .tl-right::before {border-color:white;}
+    .pub-num {background:#edf3fe;border-color:#e3ebfa;color:#376dc6;}
+    .pub-title a {color:#1e2937;}
+    .pub-title a:hover {color:#286fc1;}
+    .pub-meta,.proj-desc,.edu-deg,.tl-bullets li {color:#687585;}
+    .proj-year {color:#818d9b;}
+    .proj-tags .tag {color:#416fab;background:#eff4fb;border:1px solid #e0eaf8;}
+    .proj-card::before {display:none;}
+    .skills-grid {gap:20px;}
+    .skill-card-label {color:#376fc3;}
+    .chip {background:#f1f4f8;color:#344255;border:1px solid #e7ebf1;}
+    .awards-editorial {column-gap:42px;}
+    .award-entry {border-top-color:#dfe5eb;background:transparent;}
+    .award-content h3 {color:#1e2938;}
+    .award-content p {color:#6e7b8b;}
+    .award-index {color:#119b82;}
+    .award-entry time {color:#8591a0;}
+    .award-accent {color:#386cb2;}
+    .award-entry:hover h3 {color:#152438;}
+    footer {background:#f8fafc;border-top-color:#e5eaf0;}
+    .footer-name {font-family:Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.045em;color:#1e2938;}
+    .footer-social .social-icon {background:#fff;color:#354253;border:1px solid #e0e7ee;border-radius:12px;}
+    .footer-social .social-icon:hover {background:#f4f8fb;color:#1d3247;border-color:#8bb9d3;}
+    .footer-subtitle,.footer-copy {color:#7b8796;}
+    .award-entry.reveal.visible:hover,
+    .proj-card.reveal.visible:hover,
+    .pub-card.reveal.visible:hover,
+    .edu-card.reveal.visible:hover,
+    .skill-card.reveal.visible:hover {
+      box-shadow:0 13px 28px rgba(29,51,78,.09);
+    }
+    /* Only on hover: a fine moving blue-green keyline, never a full colored block. */
+    @media (hover:hover) and (pointer:fine) {
+      .proj-card.reveal.visible:hover,
+      .pub-card.reveal.visible:hover,
+      .edu-card.reveal.visible:hover,
+      .skill-card.reveal.visible:hover,
+      .award-entry.reveal.visible:hover {
+        border:1.5px solid transparent;
+        background:linear-gradient(#fff,#fff) padding-box,
+          conic-gradient(from var(--spin-angle),#5b8dee,#2ac9a0,#5b8dee,#2ac9a0,#5b8dee) border-box;
+        animation:border-orbit 4s linear infinite;
+        transform:translateY(-3px) scale(1.007);
+      }
+    }
+    .reveal {transition:opacity .38s ease, transform .38s cubic-bezier(.2,.82,.22,1);}
+    @media (max-width:768px) {
+      #hero {min-height:auto;padding-top:105px;padding-bottom:70px;}
+      .hero-inner {gap:35px;}
+      .hero-text h1 {font-size:3.25rem;}
+      section {padding-top:70px;padding-bottom:70px;}
+    }
+
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav aria-label="Primary navigation"><div class="nav-inner">
+  <a class="nav-logo" href="#hero">Andy Jeon</a>
+  <ul class="nav-links"><li><a href="#education">Education</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#publications">Papers</a></li><li><a href="#awards">Awards</a></li><li><a href="#skills">Skills</a></li></ul>
+</div></nav>
+
+<!-- 01 HERO: approved bio; genuine resume PDF and original portrait -->
+<section id="hero"><div class="hero-glow hero-glow-1"></div><div class="hero-glow hero-glow-2"></div>
+<div class="hero-inner">
+ <div class="hero-text">
+  <div class="badge"><span class="badge-dot"></span>Georgia Tech · Electrical Engineering</div>
+  <h1>Andy<br /><span>Jeon</span></h1>
+  <p class="hero-subtitle">Electrical Engineering Undergraduate at Georgia Tech</p>
+  <p class="bio">Electrical Engineering undergraduate at Georgia Tech with experience in Python, CAD prototyping, and semiconductor packaging research. Looking to further explore digital IC design, semiconductor devices, and CMOS/VLSI design.</p>
+  <div class="hero-cta">
+   <a href="assets/Andy_Jeon_Resume.pdf" download class="btn btn-primary">Download Resume</a>
+   <a class="btn btn-ghost" href="mailto:jjeon320@gatech.edu">Email</a>
+   <a class="btn btn-ghost" href="https://www.linkedin.com/in/andyjihoonjeon/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+  
+ </div>
+ <div class="hero-photo-wrap" id="profile-photo"><img src="assets/profile.jpg" alt="Portrait of Andy Jeon" loading="eager" decoding="async" width="724" height="1086" /><div class="photo-fallback" role="status">Profile photo to be added</div></div>
+</div></section>
+
+<!-- 02 EDUCATION -->
+<section id="education"><div class="section-inner"><p class="section-label reveal">Education</p><h2 class="section-title reveal">Academic Background</h2>
+<div class="edu-list">
+ <div class="edu-card reveal"><div><div class="edu-inst">Georgia Institute of Technology</div><div class="edu-deg">B.S. in Electrical Engineering · Atlanta, Georgia</div></div><div class="edu-date">Aug 2026 – May 2030</div></div>
+ <div class="edu-card reveal"><div><div class="edu-inst">Korean Minjok Leadership Academy</div><div class="edu-deg">High School Diploma · South Korea</div></div><div class="edu-date">Mar 2023 – Feb 2026</div></div>
+</div></div></section><div class="divider"></div>
+
+<!-- 03 EXPERIENCE: approved experience text based on resume -->
+<section id="experience"><div class="section-inner"><p class="section-label reveal">Work &amp; Leadership</p><h2 class="section-title reveal">Experience</h2><div class="timeline">
+<div class="tl-item reveal"><div class="tl-date">Mar 2025 – Feb 2026</div><div class="tl-right"><div class="tl-title">Hardware &amp; Entrepreneurship Co-Lead</div><div class="tl-org">NYC Empire State iGEM Team</div><ul class="tl-bullets"><li>Designed 4+ AutoCAD prototypes integrating Arduino, pH sensors, and LED components for a modular pH monitoring system.</li><li>Co-led a 12-member team developing an <em>E. coli</em>-based biosensor for root rot prevention in hydroponics; the team earned a Gold Medal at the 2025 iGEM Grand Jamboree.</li><li>Conducted TAM/SAM/SOM market analysis and developed cost models across three production scales to evaluate commercial feasibility.</li></ul></div></div>
+<div class="tl-item reveal"><div class="tl-date">Winter 2024</div><div class="tl-right"><div class="tl-title">Research Intern — EMC/Packaging Lab</div><div class="tl-org">KCC Corporation · South Korea</div><ul class="tl-bullets"><li>Studied flip-chip semiconductor packaging and epoxy molding compound (EMC) processes, gaining exposure to laser marking and compound mixing.</li><li>Observed material characterization procedures and analyzed EMC properties, including viscosity, gel time, and coefficient of thermal expansion (CTE), to understand their impact on molding quality.</li></ul></div></div>
+</div></div></section><div class="divider"></div>
+
+<!-- 04 PROJECTS: resume-derived descriptions and selected project content -->
+<section id="projects"><div class="section-inner"><p class="section-label reveal">Portfolio</p><h2 class="section-title reveal">Selected Projects</h2><div class="projects-grid">
+<div class="proj-card reveal"><div class="proj-header"><div class="proj-title">EMG-Controlled 3D-Printed Prosthetic Hand</div><div class="proj-year">2024–2025</div></div><div class="proj-desc">Designed and iterated 10+ prosthetic hand models in Autodesk Fusion 360, optimizing joint tolerances to 1 mm for smooth actuation. Programmed Arduino with a MyoWare 2.0 EMG sensor to classify individual finger activation signals.</div><div class="proj-tags"><span class="tag">Fusion 360</span><span class="tag">Arduino</span><span class="tag">EMG Sensors</span><span class="tag">3D Printing</span></div></div>
+<div class="proj-card reveal"><div class="proj-header"><div class="proj-title">iGEM Sensor-Based pH Monitoring System</div><div class="proj-year">2025–2026</div></div><div class="proj-desc">Designed 4+ AutoCAD prototypes integrating Arduino, pH sensors, and LED indicators for a modular pH monitoring system supporting an <em>E. coli</em>-based biosensor project for hydroponic root rot prevention.</div><div class="proj-tags"><span class="tag">AutoCAD</span><span class="tag">Arduino</span><span class="tag">pH Sensors</span><span class="tag">Hardware Prototyping</span></div></div>
+<div class="proj-card reveal"><div class="proj-header"><div class="proj-title">Multimodal Conversational AI Platform</div><div class="proj-year">2024–2025</div></div><div class="proj-desc">Fine-tuned a Korean language model using PEFT/LoRA, achieving 90–98% of full fine-tuning performance while updating approximately 1–2% of model parameters. Developed a 3D avatar interface integrating speech-to-text, GPT, and text-to-speech for voice-based interaction.</div><div class="proj-tags"><span class="tag">PEFT/LoRA</span><span class="tag">LLM</span><span class="tag">STT/TTS</span><span class="tag">3D UI</span></div></div>
+<div class="proj-card reveal"><div class="proj-header"><div class="proj-title">Aircraft Wing CFD Research</div><div class="proj-year">2025</div></div><div class="proj-desc">Investigated wingtip vortices and induced drag in NACA 2412 airfoil configurations using SimScale CFD simulations. Evaluated winglet-induced drag reduction through computational modeling and published the research in <em>Curieux Academic Journal</em>.</div><div class="proj-tags"><span class="tag">SimScale</span><span class="tag">CFD</span><span class="tag">Aerodynamics</span><span class="tag">Vector Calculus</span></div></div>
+</div></div></section><div class="divider"></div>
+
+<!-- 05 PUBLICATIONS: user-supplied citations; author lists not supplied -->
+<section id="publications"><div class="section-inner"><p class="section-label reveal">Research</p><h2 class="section-title reveal">Publications</h2><div class="pub-list">
+<div class="pub-card reveal"><div class="pub-num">01</div><div class="pub-body"><div class="pub-title"><a href="https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue16/IJHSR_2026_816_79.pdf" target="_blank" rel="noopener noreferrer">Short-Term Effects of Musical Participation on Adolescents’ Self-Efficacy: A Pretest–Posttest Study</a></div><div class="pub-meta"><em>International Journal of High School Research</em> · Vol. 8, Issue 16, pp. 79–86 · Aug 2026<br>ISSN: 2642-1054</div></div></div>
+<div class="pub-card reveal"><div class="pub-num">02</div><div class="pub-body"><div class="pub-title"><a href="https://www.hobykorea.com/page/v6i1" target="_blank" rel="noopener noreferrer">Development and Characterization of a Biodegradable Pad Using Traditional Korean Paper as an Alternative to Super Absorbent Polymers</a></div><div class="pub-meta"><em>Knowledge to Lead</em> · Vol. 6, Issue 1, pp. 252–261 · Oct 2025<br>ISSN: 2765-0626</div></div></div>
+<div class="pub-card reveal"><div class="pub-num">03</div><div class="pub-body"><div class="pub-title"><a href="https://www.curieuxacademicjournal.com/_files/ugd/99711c_0023952f54e94962b2b626ba2c586860.pdf" target="_blank" rel="noopener noreferrer">Analysis of the Utility of Curl and Divergence Through Airplane Wing Optimization</a></div><div class="pub-meta"><em>Curieux Academic Journal</em> · Issue 55, Part 1, pp. 367–381 · Oct 2025<br>ISSN: 2769-6359</div></div></div>
+</div></div></section><div class="divider"></div>
+
+<!-- 06 AWARDS: minimal editorial rows, no oversized cards -->
+<section id="awards"><div class="section-inner"><p class="section-label reveal">Recognition</p><h2 class="section-title reveal">Selected Honors &amp; Awards</h2>
+<div class="awards-editorial">
+  <div class="award-entry reveal"><span class="award-index">01</span><div class="award-content"><h3>Gold Medal — iGEM Grand Jamboree</h3><p>International Genetically Engineered Machine (iGEM) · Team award</p><span class="award-accent">Among 400+ participating teams</span></div><time datetime="2025-11">NOV 2025</time></div>
+  <div class="award-entry reveal"><span class="award-index">02</span><div class="award-content"><h3>Professor's Award — 3rd Place</h3><p>HOBY International Young Scholars Conference</p><span class="award-accent">Third-place distinction at an international young scholars conference</span></div><time datetime="2025-10">OCT 2025</time></div>
+  <div class="award-entry reveal"><span class="award-index">03</span><div class="award-content"><h3>Bronze Medal &amp; Finalist</h3><p>International Greenwich Olympiad</p><span class="award-accent">Selected STEM National Representative</span></div><time datetime="2025-06">JUN 2025</time></div>
+  <div class="award-entry reveal"><span class="award-index">04</span><div class="award-content"><h3>Bronze Award</h3><p>Korean Science and Engineering Fair</p><span class="award-accent">Bronze recognition at a national science and engineering fair</span></div><time datetime="2025-02">FEB 2025</time></div>
+</div></div></section><div class="divider"></div>
+
+<!-- 07 SKILLS: approved skills; no RTL/FPGA claims -->
+<section id="skills"><div class="section-inner"><p class="section-label reveal">Toolkit</p><h2 class="section-title reveal">Technical Skills</h2><div class="skills-grid">
+<div class="skill-card reveal"><div class="skill-card-label">Programming &amp; Development</div><div class="skill-chips"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">GitHub</span></div></div>
+<div class="skill-card reveal"><div class="skill-card-label">CAD &amp; Hardware Prototyping</div><div class="skill-chips"><span class="chip">Autodesk Fusion 360</span><span class="chip">AutoCAD</span><span class="chip">Arduino</span><span class="chip">3D Printing</span></div></div>
+<div class="skill-card reveal"><div class="skill-card-label">Engineering &amp; Analysis</div><div class="skill-chips"><span class="chip">SimScale</span><span class="chip">Computational Fluid Dynamics (CFD)</span><span class="chip">SPSS</span></div></div>
+</div></div></section>
+
+<footer><div class="footer-inner"><div class="footer-name">Andy Jeon</div>
+<p class="footer-subtitle">Electrical Engineering · Georgia Institute of Technology</p>
+<div class="footer-social" aria-label="Contact and social links">
+<a class="social-icon" href="mailto:jjeon320@gatech.edu" aria-label="Email Andy Jeon" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Email</span></a>
+<a class="social-icon" href="https://www.linkedin.com/in/andyjihoonjeon/" target="_blank" rel="noopener noreferrer" aria-label="Andy Jeon's LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7.5v.1M12 17v-7m0 3a3 3 0 0 1 6 0v4"/></svg><span>LinkedIn</span></a>
+<a class="social-icon" href="https://github.com/andyjihoon2" target="_blank" rel="noopener noreferrer" aria-label="Andy Jeon on GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.2 1.4-4.2-2-5.9-2.4M15 22v-3.9a3.5 3.5 0 0 0-.9-2.7c3-.4 6-1.5 6-6.7a5.1 5.1 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.4s-1.2-.4-3.6 1.4a12.6 12.6 0 0 0-6 0C6.6 1.4 5.4 1.8 5.4 1.8a4.7 4.7 0 0 0-.1 3.4A5.1 5.1 0 0 0 3.9 8.7c0 5.2 3 6.3 6 6.7a3.5 3.5 0 0 0-.9 2.7V22"/></svg><span>GitHub</span></a>
+</div><p class="footer-copy">&copy; 2026 Andy Jeon. Built with HTML, CSS &amp; JavaScript.</p></div></footer>
+<script>
+  // Reveal: preserve original design; gracefully handle browsers without IntersectionObserver.
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach((element,i) => {observer.observe(element);});
+  } else { document.querySelectorAll('.reveal').forEach(element => element.classList.add('visible')); }
+
+  // Profile image is intentionally not substituted with a generated portrait.
+  const profile = document.querySelector('#profile-photo');
+  const image = profile.querySelector('img');
+  image.addEventListener('load', () => profile.classList.add('has-photo'));
+  if (image.complete && image.naturalWidth > 0) profile.classList.add('has-photo');
+  image.addEventListener('error', () => profile.classList.remove('has-photo'));
+
+
+</script>
+</body></html>
